@@ -16,7 +16,7 @@ pub struct Cli {
 use std::io::{self, BufRead};
 use std::fs::File;
 
-fn run(cli: Cli) -> io::Result<()> {
+pub fn run(cli: Cli) -> io::Result<()> {
     let file = File::open(&cli.path).map_err(|e| {
         io::Error::new(e.kind(), format!("Failed to open file {}: {}", cli.path.display(), e))
     })?;
