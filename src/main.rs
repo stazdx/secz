@@ -1,4 +1,4 @@
-mod cli;
+use secz::cli;
 
 fn main() {
     println!("Hello, world!");

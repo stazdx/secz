@@ -201,17 +201,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "grrs"
-version = "0.1.0"
-dependencies = [
- "clap 4.4.8",
- "env_logger",
- "indicatif",
- "log",
- "structopt",
-]
-
-[[package]]
 name = "heck"
 version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -404,6 +393,17 @@ dependencies = [
  "libc",
  "linux-raw-sys",
  "windows-sys 0.48.0",
+]
+
+[[package]]
+name = "secz"
+version = "0.1.0"
+dependencies = [
+ "clap 4.4.8",
+ "env_logger",
+ "indicatif",
+ "log",
+ "structopt",
 ]
 
 [[package]]
