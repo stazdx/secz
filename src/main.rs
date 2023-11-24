@@ -1,5 +1,10 @@
 use secz::cli;
 use structopt::StructOpt;
+// use secz::commands::scan::ResourceType; 
+
+mod commands {
+    pub mod scan;
+}
 
 fn main() {
     println!("Hello, world!");

@@ -1,5 +1,6 @@
 use std::path::PathBuf;
 use structopt::StructOpt;
+use crate::commands::scan::ResourceType;
 
 #[derive(Debug, StructOpt)]
 #[structopt(name = "secz", about = "A security CLI tool.")]
@@ -29,16 +30,16 @@ pub enum Command {
 
 }
 
-#[derive(Debug, StructOpt)]
-pub enum ResourceType {
-    Sonar {
-        applications: u32,
-    },
-    Trivy {
-        a1: String,
-        a2: u32,
-    }
-}
+// #[derive(Debug, StructOpt)]
+// pub enum ResourceType {
+//     Sonar {
+//         applications: u32,
+//     },
+//     Trivy {
+//         a1: String,
+//         a2: u32,
+//     }
+// }
 
 use std::io::{self, BufRead};
 use std::fs::File;
