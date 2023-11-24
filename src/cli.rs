@@ -1,6 +1,6 @@
 use std::path::PathBuf;
 use structopt::StructOpt;
-use crate::commands::scan::ResourceType;
+use crate::commands::scan;
 
 #[derive(Debug, StructOpt)]
 #[structopt(name = "secz", about = "A security CLI tool.")]
@@ -20,7 +20,7 @@ pub struct Cli {
 pub enum Command {
     Scan {
         #[structopt(subcommand)]
-        resource: ResourceType,
+        resource: scan::ResourceType,
         // #[structopt(short = "a", long = "all")]
         // all: String,
     },

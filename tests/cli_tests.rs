@@ -1,8 +1,11 @@
 use secz::cli;
+use secz::commands::scan;
 
 #[cfg(test)]
 mod tests {
     use std::path::PathBuf;
+
+    use secz::commands;
 
     use super::*;
 
@@ -12,7 +15,7 @@ mod tests {
 
         let cli = cli::Cli {
             cmd: cli::Command::Scan {
-                resource: cli::ResourceType::Sonar {
+                resource: scan::ResourceType::Sonar {
                     applications: 1,
                 },
                 // all: "all".to_string(),
