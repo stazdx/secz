@@ -1,1 +1,5 @@
 /target
+/.vscode
+/.scannerwork
+clippy-report.json
+Cargo.lock

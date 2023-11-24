@@ -30,17 +30,6 @@ pub enum Command {
 
 }
 
-// #[derive(Debug, StructOpt)]
-// pub enum ResourceType {
-//     Sonar {
-//         applications: u32,
-//     },
-//     Trivy {
-//         a1: String,
-//         a2: u32,
-//     }
-// }
-
 use std::io::{self, BufRead};
 use std::fs::File;
 
