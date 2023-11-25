@@ -7,7 +7,7 @@ edition = "2021"
 
 [dependencies]
 structopt = {}
-clap = { version = "4.4.8", features = ["derive"] }
+clap = { version = "4.4.8", features = ["derive", "wrap_help", "cargo"] }
 indicatif = { version = "0.17.7" }
 log = { version = "0.4.20" }
 env_logger = {}
