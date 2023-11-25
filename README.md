@@ -15,8 +15,8 @@ secz [command] [options]
 
 Here are the available commands:
 
-command1: Description of command1.
-command2: Description of command2.
+sonar: Description of sonar.
+trivy: Description of trivy.
 And here are the available options:
 
 -p, --pattern: Description of pattern.
