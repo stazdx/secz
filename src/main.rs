@@ -7,14 +7,6 @@ mod commands {
 }
 
 fn main() {
-    println!("Hello, world!");
-    // let cli = cli::Cli {
-    //     pattern: "test".to_string(),
-    //     path: std::path::PathBuf::from("file.txt"),
-    // };
-
-    // let cli = cli::Cli::from_args();
-
     let mut cli = Command::new("secz");
     cli = cli::Cli::augment_args(cli);
     println!("{:?}", cli);

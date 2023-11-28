@@ -1,7 +1,6 @@
-use structopt::StructOpt;
 use crate::commands::scan;
 
-use clap::{Arg, Subcommand, Parser};
+use clap::{Subcommand, Parser};
 
 #[derive(Debug, Clone, Parser)]
 pub struct Cli {
