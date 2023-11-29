@@ -1,7 +1,7 @@
 
 // use structopt::StructOpt;
-// use std::process::Command;
-// use indicatif::{ProgressBar, ProgressStyle};
+use std::process::Command;
+use indicatif::{ProgressBar, ProgressStyle};
 use clap::{Parser, Subcommand};
 
 #[derive(Debug, Clone, Subcommand)]
@@ -28,29 +28,29 @@ pub struct TrivyTool {
     pub trivy: String,
 }
 
-// pub fn sonarRun() {
-//     let pb = ProgressBar::new_spinner();
-//     pb.set_style(ProgressStyle::default_spinner());
+pub fn sonarRun() {
+    let pb = ProgressBar::new_spinner();
+    pb.set_style(ProgressStyle::default_spinner());
 
-//     let mut child = Command::new("sonar-scanner")
-//             .arg("-Dsonar.rust.clippy.reportPaths=clippy-report.json")
-//             .arg("-Dsonar.login=admin")
-//             .arg("-Dsonar.password=admin123")
-//             // .output()
-//             .spawn()
-//             .expect("Failed to execute command");
+    let mut child = Command::new("sonar-scanner")
+            .arg("-Dsonar.rust.clippy.reportPaths=clippy-report.json")
+            .arg("-Dsonar.login=admin")
+            .arg("-Dsonar.password=admin123")
+            // .output()
+            .spawn()
+            .expect("Failed to execute command");
 
-//     pb.set_message("Running sonar-scanner...");
+    pb.set_message("Running sonar-scanner...");
     
-//     while let Ok(None) = child.try_wait() {
-//         pb.tick();
-//         std::thread::sleep(std::time::Duration::from_millis(100));
-//     }
+    while let Ok(None) = child.try_wait() {
+        pb.tick();
+        std::thread::sleep(std::time::Duration::from_millis(100));
+    }
 
-//     pb.finish_with_message("sonarRun completed");
+    pb.finish_with_message("sonarRun completed");
 
-//     // let child = String::from_utf8_lossy(&child.stdout);
+    // let child = String::from_utf8_lossy(&child.stdout);
 
-//     // println!("Output: {}", child);
+    // println!("Output: {}", child);
 
-// }
+}
