@@ -1,6 +1,6 @@
 use crate::commands::scan;
 
-use clap::{Subcommand, Parser, ArgMatches};
+use clap::{Subcommand, Parser};
 
 #[derive(Debug, Clone, Parser)]
 pub struct Cli {
