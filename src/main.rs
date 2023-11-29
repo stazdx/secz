@@ -1,5 +1,5 @@
 // use structopt::StructOpt;
-use clap::{Command, Args, ArgMatches};
+use clap::{Command, Args};
 mod cli;
 
 mod commands {
@@ -7,27 +7,45 @@ mod commands {
 }
 
 fn main() {
-    let mut cli = Command::new("secz");
-    cli = cli::Cli::augment_args(cli);
-    // println!("{:?}", cli);
-cli.get_matches().get_one(id)
-    let name = cli.get_matches();
-    print!("{:?}", name);
+    let cli = Command::new("secz");
 
-    match name.subcommand() {
-        Some("scan") => {
-            println!("Scan");
-        },
-        Some(("scan", name)) => {
-            if name.get_one("sonar") {
-                println!("Scan sonar");
-                secz::commands::scan::sonarRun();
-            } else if name.get_one("trivy") {
-                println!("Scan trivy");
-                // secz::commands::scan::Trivy();
+    let command = cli::Cli::augment_args(cli).get_matches();
+
+    match command.subcommand_matches("scan") {
+        Some(sub_matches) => {
+            let tool = if sub_matches.subcommand_matches("sonar").is_some() {
+                "sonar"
             } else {
-                eprintln!("Unknown tool");
-            }
+                "other"
+            };
+            println!("Tool: {:?}", tool);
+        }
+        None => {
+            eprintln!("Unknown command");
+        },
+    }
+}
+    // match command.subcommand() {
+    //     Some(("scan", sub_matches)) => {
+    //         println!("{}", command.);
+    //         let tool = if command.contains_id("sonar") {
+    //             "sonar"
+    //         } else {
+    //             "other"
+    //         };
+    //         println!("Tool: {}", tool);
+    //     },
+    //     Some(("test", _sub_matches)) => {
+    //         println!("Test");
+            // if name.get_one("sonar") {
+            //     println!("Scan sonar");
+            //     secz::commands::scan::sonarRun();
+            // } else if name.get_one("trivy") {
+            //     println!("Scan trivy");
+            //     // secz::commands::scan::Trivy();
+            // } else {
+            //     eprintln!("Unknown tool");
+            // }
             // Some(("sonar", name.get_one("sonar"))) => {
             //     println!("Scan sonar");
             //     secz::commands::scan::sonarRun();
@@ -36,11 +54,11 @@ cli.get_matches().get_one(id)
             //     println!("Scan trivy");
             //     // secz::commands::scan::Trivy();
             // },
-        },
-        _ => {
-            eprintln!("Unknown command");
-        }
-    }
+        // },
+        // _ => {
+        //     eprintln!("Unknown command");
+        // }
+    // }
 
     // match cli.get_matches().subcommand() {
     //     secz::commands::scan::ScanCommands::ToolType(tool) => {
@@ -60,4 +78,4 @@ cli.get_matches().get_one(id)
     //         }
     //     }
     // }
-}
+// }

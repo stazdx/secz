@@ -8,6 +8,8 @@ use clap::{Parser, Subcommand};
 pub enum ScanCommands {
     #[clap(subcommand, about = "Scan with a tool", name = "scan")]
     ToolType(ToolType),
+    #[clap(subcommand, about = "Scan with a tool2", name = "test")]
+    Test(ToolType),
 }
 
 #[derive(Debug, Clone, Subcommand)]
@@ -18,7 +20,7 @@ pub enum ToolType {
 
 #[derive(Debug, Clone, Parser)]
 pub struct SonarTool {
-    #[arg(long, default_value = "sonar-scanner", ignore_case = true)]
+    #[arg(id = "sonar",long, default_value = "sonar-scanner", ignore_case = true)]
     pub sonar: String,
 }
 
@@ -28,7 +30,7 @@ pub struct TrivyTool {
     pub trivy: String,
 }
 
-pub fn sonarRun() {
+pub fn sonar_run() {
     let pb = ProgressBar::new_spinner();
     pb.set_style(ProgressStyle::default_spinner());
 
