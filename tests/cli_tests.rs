@@ -1,30 +1,24 @@
 use secz::cli;
 use secz::commands::scan;
+use clap::{Command, Args};
 
 #[cfg(test)]
 mod tests {
-    use std::path::PathBuf;
-
-    use secz::commands;
-
     use super::*;
 
     #[test]
-    fn test_something() {
-        // Arrange
+    fn test_main() {
+        // Simulate command line arguments
+        let args = vec!["secz", "scan", "sonar"];
 
-        let cli = cli::Cli {
-            cmd: cli::Command::Scan {
-                resource: scan::ResourceType::Sonar {},
-                // all: "all".to_string(),
-            },
-            // pattern: "test".to_string(),
-            // path: PathBuf::from("non_existing_file.txt"),
-        };
-        // Assert
-        // assert!(cli::run(cli).is_err());
-        assert!(true)
+        // Set up the command line arguments
+        let mut cli = Command::new("secz");
+        cli.set_args(args);
+
+        // Call the main function
+        main();
+
+        // Assert that the correct tool is printed
+        assert_eq!(std::io::stdout().to_string(), "Tool: Some(\"sonar\")\n");
     }
-
-    // Add more tests here...
 }
