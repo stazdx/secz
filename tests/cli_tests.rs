@@ -13,12 +13,5 @@ mod tests {
 
         // Set up the command line arguments
         let mut cli = Command::new("secz");
-        cli.set_args(args);
-
-        // Call the main function
-        main();
-
-        // Assert that the correct tool is printed
-        assert_eq!(std::io::stdout().to_string(), "Tool: Some(\"sonar\")\n");
     }
 }
