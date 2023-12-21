@@ -14,6 +14,19 @@ fn main() {
 
     let tool = sub_matches.subcommand_name().unwrap_or("other");
     println!("Tool: {:?}", tool);
+
+    match tool {
+        "sonar" => {
+            println!("Sonar");
+            commands::scan::sonar_run();
+        },
+        "trivy" => {
+            println!("Trivy");
+        },
+        _ => {
+            eprintln!("Unknown tool");
+        },
+    }
 }
     // match cli.get_matches().subcommand() {
     //     secz::commands::scan::ScanCommands::ToolType(tool) => {
