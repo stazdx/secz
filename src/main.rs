@@ -18,7 +18,8 @@ fn main() {
     match tool {
         "sonar" => {
             println!("Sonar");
-            commands::scan::sonar_run();
+            // commands::scan::sonar_run();
+            let _ = commands::scan::read_yaml();
         },
         "trivy" => {
             println!("Trivy");

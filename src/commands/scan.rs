@@ -3,6 +3,28 @@
 use std::process::Command;
 use indicatif::{ProgressBar, ProgressStyle};
 use clap::{Parser, Subcommand};
+use serde::{Deserialize, Serialize};
+use serde_yaml;
+use std::fs::File;
+use std::io::prelude::*;
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+struct Config {
+    trivy: TrivyConfig,
+    sonar: SonarConfig,
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+struct TrivyConfig {
+    enabled: bool,
+    args: Vec<String>,
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+struct SonarConfig {
+    enabled: bool,
+    args: Vec<String>,
+}
 
 #[derive(Debug, Clone, Subcommand)]
 pub enum ScanCommands {
@@ -28,6 +50,18 @@ pub struct SonarTool {
 pub struct TrivyTool {
     #[arg(long, default_value = "trivy", ignore_case = true)]
     pub trivy: String,
+}
+
+pub fn read_yaml() -> Result<(), serde_yaml::Error> {
+    let mut file = File::open("secz.yaml").expect("Unable to open file");
+
+    let mut contents = String::new();
+    file.read_to_string(&mut contents).expect("Unable to read the file");
+    
+    let config: Config = serde_yaml::from_str(&contents["config:".len()..])?;
+    println!("{:?}", &config);
+
+    Ok(())
 }
 
 pub fn sonar_run() {
