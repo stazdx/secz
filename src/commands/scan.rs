@@ -34,11 +34,14 @@ pub fn sonar_run() {
     let pb = ProgressBar::new_spinner();
     pb.set_style(ProgressStyle::default_spinner());
 
+    let args = [
+        "-Dsonar.rust.clippy.reportPaths=clippy-report.json",
+        "-Dsonar.login=admin",
+        "-Dsonar.password=admin123"
+        ];
+
     let mut child = Command::new("sonar-scanner")
-            .arg("-Dsonar.rust.clippy.reportPaths=clippy-report.json")
-            .arg("-Dsonar.login=admin")
-            .arg("-Dsonar.password=admin123")
-            // .output()
+            .args(&args)
             .spawn()
             .expect("Failed to execute command");
 
